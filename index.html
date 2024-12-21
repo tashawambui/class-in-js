@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Classes</title>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <script>
+        // Define a base class with a static method
+        class Animal {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            static species() {
+                return "This is an animal.";
+            }
+
+            getDetails() {
+                return `Name: ${this.name}, Age: ${this.age}`;
+            }
+        }
+
+        // Define a subclass that inherits from the base class
+        class Dog extends Animal {
+            constructor(name, age, breed) {
+                super(name, age);
+                this.breed = breed;
+            }
+
+            getDetails() {
+                return `${super.getDetails()}, Breed: ${this.breed}`;
+            }
+        }
+
+        // Create instances of the subclass
+        let dog1 = new Dog("Buddy", 3, "Golden Retriever");
+        let dog2 = new Dog("Max", 5, "German Shepherd");
+
+        // Access the static method from the base class
+        let speciesInfo = Animal.species();
+
+        // Access the properties and methods from the instances
+        let details1 = dog1.getDetails();
+        let details2 = dog2.getDetails();
+
+        // Display the results in the HTML
+        document.getElementById("output").innerHTML = `
+            <p>${speciesInfo}</p>
+            <p>${details1}</p>
+            <p>${details2}</p>
+        `;
+    </script>
+</body>
+
+</html>
